@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 const getHelados = () => {
-    const URL = "https://github.com/KevinERamos/happyice/blob/gh-pages/productos.json";
+    const URL = "productos.json";
     return fetch(URL).
         then(response => response.json())
         .then(data => data)
