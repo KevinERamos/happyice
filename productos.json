@@ -1,0 +1,59 @@
+[
+    {
+        "id":"1",
+        "nombre":"donito",
+        "imagen":"img/1.jpg",
+        "info":"Helado con de hielo crema",
+        "precio":"0.50"
+    },
+    {
+        "id":"2",
+        "nombre":"turbo",
+        "imagen":"img/2.jpg",
+        "info":"Helado con de hielo crema",
+        "precio":"0.50"
+    },
+    {
+        "id":"3",
+        "nombre":"zambito",
+        "imagen":"img/3.jpg",
+        "info":"Helado con de hielo crema",
+        "precio":"1.00"
+    },
+    {
+        "id":"4",
+        "nombre":"dos bolas",
+        "imagen":"img/4.jpg",
+        "info":"Helado con de hielo crema",
+        "precio":"2.50"
+    },
+    {
+        "id":"5",
+        "nombre":"3 bolas",
+        "imagen":"img/5.jpg",
+        "info":"Helado con de hielo crema",
+        "precio":"3.00"
+    },
+    {
+        "id":"6",
+        "nombre":"frio rico",
+        "imagen":"img/6.jpg",
+        "info":"Helado con de hielo crema",
+        "precio":"4.50"
+    },
+    {
+        "id":"7",
+        "nombre":"canastilla",
+        "imagen":"img/7.jpg",
+        "info":"Helado con de hielo crema",
+        "precio":"5.00"
+    },
+    {
+        "id":"8",
+        "nombre":"super combo",
+        "imagen":"img/8.jpg",
+        "info":"Helado con de hielo crema",
+        "precio":"7.00"
+    }
+
+]

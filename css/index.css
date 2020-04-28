@@ -1,0 +1,25 @@
+body{
+  background-color: rgba(4, 123, 128, 0.411);
+}
+
+.crece:hover{
+  transform: scale(1.02);
+  transition: all .5s;
+  background-color: rgb(69, 0, 83);
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 94, 0);
+}
+
+#pintarCarrito {
+  position: absolute;
+  top: 82px;
+  right: 0;
+  background-color: #fff;
+  width: 395px;
+  max-height: 170px;
+  overflow: scroll;
+  background-color: rgba(0, 0, 0, 0.76);
+}
+
+
+

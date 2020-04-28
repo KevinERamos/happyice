@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- css usuario -->
+    <link rel="stylesheet" href="css/index.css">
+
+    <title>Carrito de Compra</title>
+
+
+    <!-- js font -->
+    <script src="https://kit.fontawesome.com/e7bfea5b44.js" crossorigin="anonymous"></script>
+
+    <!-- js ussuario -->
+    <script src="js/index.js"></script>
+
+    
+  </head>
+  <body>
+
+
+    <!-- NAVBAR INICIO -->
+    <nav class="navbar navbar-expand-sm navbar navbar-dark bg-dark fixed-top" >
+        <a class="navbar-brand" href="#"><i class="fas fa-ice-cream display-4 text-info font-weight-bold"></i></a>
+
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span ><i class="fas fa-angle-double-down h2 font-weight-bolder" style="color: palevioletred;"></i></span>
+        </button>
+      
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav w-100  d-flex justify-content-end">
+
+                <li class="nav-item active align-self-start d-none d-sm-block ">
+                  <a class="nav-link " href="#"><span class="font-weight-bold text-warning h1">HAPPY</span> <span class="font-weight-bold text-success h3">ICE</span> <span class="font-weight-bold text-primary h5">CREAM</span><span class="sr-only ">(current)</span></a>
+                </li>
+                
+                
+            </ul>
+
+            <ul  class="navbar-nav w-100  d-flex justify-content-end">
+                <li class="nav-item align-self-end">
+                  <button onclick="cerrarAbrirCarrito()" class="nav-link bg-transparent border-0" id="carrito" href="#"><i class="fas fa-cart-plus h2 text-danger" aria-hidden="true"></i></button>
+                    <!-- <a class="nav-link " id="carrito" href="#" data-toggle="modal" data-target="#modalLS"><i class="fas fa-cart-plus h2 text-danger" aria-hidden="true"></i></a> -->
+                </li>
+            </ul>
+
+
+
+            <!-- carrito a pintar -->
+            <div class="modal-body d-none p-0" id="pintarCarrito"></div>
+         
+        </div>
+        
+      </nav>
+      
+    <!-- NAVBAR FIN -->
+
+    <!-- MODAL INICIO -->
+    <div class="modal fade" id="modalLS" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Contenido del carrito</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <!-- <div class="modal-body">
+            
+          </div> -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Comprar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- MODAL FIN -->
+
+
+    <!-- PRESENTACION INICIO -->
+    <div class="jumbotron jumbotron-fluid bg-dark border-top border-white">
+        <div class="container mt-4">
+          <h1 class="display-4 text-warning pt-4">Ven a tu heladeria favorita </h1>
+          <p class="lead text-success font-weight-bold ">Compra tus helados desde nuestra pagina, separa tu pedido y te lo llevamos a la puerta de tu casa</p>
+        </div>
+      </div>
+    <!-- PRESENTACION FIN -->
+
+    
+
+    <!-- CONTENIDO INICIO -->
+    <div class="container my-4" >
+        <div class="row" id="contenido">
+            <!-- pintarHelados() -->
+        </div>
+    </div>
+    <!-- CONTENIDO FIN -->
+
+    
+
+    
+    <!-- FOOTER INICIO -->
+    <footer>
+        <div class="container-fluid bg-dark">
+          
+          <div class="row">
+      
+            <div class="col-12 text-center">
+              <a href="https://kevineramos.github.io/" target="_blank" class="navbar-brand display-4 text-white">
+                <strong class="text-success font-weight-bold">
+                  &lt; </strong>Kevin Ramos <strong class="text-warning font-weight-bold">/&gt;</strong>
+              </a>
+            </div>
+          </div>
+      
+          <div class="row">
+            <div class="col">
+              <p class="text-center  text-white">Todos los derechos reservador © Kevin E Ramos <script> document.write(new Date().getFullYear()) </script></p> <p></p>
+            </div>
+          </div>
+      
+          <div class="row ">
+            <div class="col-4 text-center">
+              <a href="https://www.facebook.com/kevin.Eduardo.Ramos.Gonzales" target="_blank"><i class="efecto fab fa-facebook-square text-center h1" aria-hidden="true"></i></a>
+            </div>
+            
+            <div class="col-4 text-center ">
+              <a href="https://api.whatsapp.com/send?phone=51970344480&amp;text=Hola!%20Kevin%20E%20mas%20Ramos!" target="_blank"><i class="efecto fab fa-whatsapp text-success h1" aria-hidden="true"></i></a>
+            </div>
+      
+            <div class="col-4 text-center pb-4">
+              <a href="https://github.com/KevinERamos/kevinmovie" target="_blank"><i class="fab fa-github text-muted h1 efecto" aria-hidden="true"></i></a>
+            </div>
+          </div>
+          
+        </div>
+    </footer>
+    <!-- FOOTER FIN -->
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
