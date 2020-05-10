@@ -112,7 +112,7 @@ a.crece-btn {
   position: absolute;
   right: 4%;
   padding: 0;
-  z-index: 2;
+  z-index: 4;
   bottom: 15px;
   height: 80px;
   border-radius: 100%;
