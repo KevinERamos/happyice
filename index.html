@@ -6,6 +6,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+  
+
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -33,42 +35,44 @@
 
 
   <!-- NAVBAR INICIO -->
-  <nav class="navbar navbar-expand-sm navbar navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#"><i class="fas fa-ice-cream display-4 text-info font-weight-bold"></i></a>
-
-    <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span><i class="fas fa-angle-double-down h2 font-weight-bolder" style="color: palevioletred;"></i></span>
-    </button>
-
-    <div class="collapse navbar-collapse " id="navbarSupportedContent">
-      <ul class="navbar-nav w-100  d-flex justify-content-end">
-
-        <li class="nav-item active align-self-start d-none d-sm-block ">
-          <a class="nav-link " href="#"><span class="font-weight-bold text-warning h1">HAPPY</span> <span
-              class="font-weight-bold text-success h3">ICE</span> <span
-              class="font-weight-bold text-primary h5">CREAM</span><span class="sr-only ">(current)</span></a>
-        </li>
-
-
-      </ul>
-
-      <ul class="navbar-nav w-100  d-flex justify-content-end">
-        <li class="nav-item align-self-end">
-          <button onclick="cerrarAbrirCarrito()" class="nav-link bg-transparent border-0" id="carrito" href="#"><i
-              class="fas fa-cart-plus h2 text-danger" aria-hidden="true"></i></button>
-          <!-- <a class="nav-link " id="carrito" href="#" data-toggle="modal" data-target="#modalLS"><i class="fas fa-cart-plus h2 text-danger" aria-hidden="true"></i></a> -->
-        </li>
-      </ul>
-
-
-
-      <!-- carrito a pintar -->
-      <div class="modal-body d-none p-0" id="pintarCarrito"></div>
-
+  <nav class="navbar navbar-expand-sm justify-content-center navbar navbar-dark bg-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-12"><span class="icon-whatsapp"></span><span class="icon-instagram"></span></div>
+        <div class="col-12"><a class="nav-link " href="#"><img src="./img/vintage_frozen_custard_logo.png"
+              class="img-fluid" /></a></div>
+      </div>
+      
     </div>
-
   </nav>
+  <!-- Swiper -->
+  <section>
+    <div id="swipper-pizza" class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="img/banner1.jpg">
+        </div>
+        <div class="swiper-slide">
+          <img src="img/banner2.jpg">
+        </div>
+        <div class="swiper-slide">
+          <img src="img/banner1.jpg">
+        </div>
+        <div class="swiper-slide">
+          <img src="img/banner2.jpg">
+        </div>
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+  <!--Swipper-->
+  <!-- carrito de compras -->
+  <div class="modal-body d-none p-0" id="pintarCarrito"></div>
+  <div class="card-sales">
+    <button onclick="cerrarAbrirCarrito()" class="nav-link bg-transparent border-0" id="carrito" href="#"><i
+        class="fas fa-cart-plus h2 text-danger" aria-hidden="true"></i></button>
+  </div>
 
   <!-- NAVBAR FIN -->
 
@@ -131,53 +135,27 @@
           <button type="button" class="btn btn-info" data-dismiss="modal">Seguir Comprando</button>
           <!-- <a target="_blank" onclick="sendOrden(event)" type="button" id="sendOrden" class="btn btn-success" >Enviar por Whatsapp</a> -->
           <!-- here we call the function that makes PDF -->
-          <a target="_blank" id="sendOrden" onclick="sendOrden(event)" type="button" id="sendOrden" class="btn btn-success generar">Enviar y Descargar</a>
+          <a target="_blank" id="sendOrden" onclick="sendOrden(event)" type="button" id="sendOrden"
+            class="btn btn-success generar">Enviar y Descargar</a>
         </div>
       </div>
     </div>
   </div>
   <!-- MODAL ORDEN FIN -->
 
-  
+
 
   <!-- PRESENTACION INICIO -->
-  <div class="jumbotron jumbotron-fluid bg-dark border-top border-white">
-    <div class="container mt-4">
-      <h1 class="display-4 text-warning pt-4">Ven a tu heladeria favorita </h1>
-      <p class="lead text-success font-weight-bold ">Compra tus helados desde nuestra pagina, separa tu pedido y te lo
-        llevamos a la puerta de tu casa</p>
+  <div class="jumbotron-fluid txt-welcome">
+    <div class="container">
+      <h1 class="text-center font-weight-bold">LOS MEJORES HELADOS A TU ALCANCE</h1>
     </div>
   </div>
   <!-- PRESENTACION FIN -->
 
-
-  <!-- Swiper -->
-  <div id="swipper-pizza" class="swiper-container">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <img src="img/1.jpg">
-      </div>
-      <div class="swiper-slide">
-        <img src="img/1.jpg">
-      </div>
-      <div class="swiper-slide">
-        <img src="img/1.jpg">
-      </div>
-      <div class="swiper-slide">
-        <img src="img/1.jpg">
-      </div>
-    </div>
-    <!-- Add Pagination -->
-    <div class="swiper-pagination"></div>
-    <!-- Add Arrows -->
-    <!-- <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div> -->
-  </div>
-  <!--Swipper-->
-
   <!-- CONTENIDO INICIO -->
   <div class="container my-4">
-    <div class="row" id="contenido">
+    <div class="row d-flex justify-content-center" id="contenido">
       <!-- pintarHelados() -->
     </div>
   </div>

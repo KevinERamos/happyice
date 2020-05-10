@@ -27,17 +27,15 @@ const pintarHelados = async () => {
     helados.forEach(helado => {
         // cl(helado);
         html += `
-        <div class="col-10 offset-1 col-sm-6 offset-sm-0 col-md-4 border-0">
-            <div class="card border-0">
-                <div class="mx-3 my-4 bg-white rounded sombra text-center" id="cont">
-                    <img src="${helado.imagen}" width="2px"  class="card-img-top" alt="...">
-                    <div class="card-body border-top border-info border-0">
-                        <h4 class="mayus card-title h4 text-center text-info">${helado.nombre}</h5>
-                        <h5 class="card-title">S/.${helado.precio}</h5>
-                        <p class="card-text">${helado.info}</p>
-                        <a href="#" class="btn btn-warning" id="añadir" onclick="añadirCarrito(${helado.id})">Añadir a cesta</a>
-                    </div>
-                </div>  
+        <div class="card col-12  col-md-4 col-lg-3 crece  m-0 p-0 "  style="width: 18rem;">
+            <div class="m-1 card-product">
+                <img src="${helado.imagen}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h4 class="card-title h4 text-center text-info">${helado.nombre}</h5>
+                    <h5 class="card-title">S/.${helado.precio}</h5>
+                    <p class="card-text">${helado.info}</p>
+                    <a href="#" class="btn crece-btn" id="añadir" onclick="añadirCarrito(${helado.id})">AÑADIR</a>
+                </div>
             </div>            
         </div> 
         `;
@@ -92,6 +90,7 @@ const obtenerLocalStorage = () => {
 
 //Abre y cierra, segun display del div de carrito
 const cerrarAbrirCarrito = () => {
+    cl(window.event.type);
     const containerCart = q("#pintarCarrito");
 
     containerCart.classList.forEach(clase => {
@@ -306,7 +305,7 @@ const deleteAll = () => {
 }
 
 
-//Pinta pedido en el modal - Pasa el valo del total al LS
+//Pinta pedido en el modal - Pasa el valor del total al LS
 const pedido = async (total) => {
     cerrarAbrirCarrito();
 
@@ -383,7 +382,8 @@ const sendOrden = async (e) => {
 
             let evt = `https://api.whatsapp.com/send?phone=51970344480&text=Hola!%20soy%20${nombre}%20realice%20un%20pedido%20desde%20la%20web!%20Esta%20es%20mi%20direccion%20"%20${direccion}%20"%20y%20mi%20celular%20${celular}%20${cadena}%20con%20un%20total%20de%20${monto}`;
 
-            window.location.href = evt;
+            window.open(evt, '_blank');
+            // window.location.href = evt;
         }
     }
 }
