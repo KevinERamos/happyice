@@ -6,12 +6,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  
+
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <!--  Swiper  -->
   <link rel="stylesheet" href="css/swipper-autoplay.css">
   <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
@@ -32,34 +33,43 @@
 </head>
 
 <body>
-
+  <div class="w-100 d-flex justify-content-center bg-dark fixed-top">
+    <i class="fab fa-facebook-f fa-3x text-white p-3"></i>
+    <i class="fab fa-whatsapp fa-3x text-white p-3"></i>
+    <i class="fab fa-instagram fa-3x text-white p-3"></i>
+  </div>
 
   <!-- NAVBAR INICIO -->
-  <nav class="navbar navbar-expand-sm justify-content-center navbar navbar-dark bg-white">
-    <div class="container">
+  <nav class="navbar navbar-expand-sm justify-content-center navbar navbar-dark bg-white mt-5 pt-4">
+    <div class="container justify-content-center">
       <div class="row">
-        <div class="col-12"><span class="icon-whatsapp"></span><span class="icon-instagram"></span></div>
-        <div class="col-12"><a class="nav-link " href="#"><img src="./img/vintage_frozen_custard_logo.png"
-              class="img-fluid" /></a></div>
+        <div class="col-12 d-flex justify-content-center">
+          <a class="nav-link " href="#"><img src="./img/vintage_frozen_custard_logo.png" class="img-fluid" /></a>
+        </div>
       </div>
-      
     </div>
+
+
   </nav>
   <!-- Swiper -->
   <section>
     <div id="swipper-pizza" class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <img src="img/banner1.jpg">
+          <img src="img/banner1.jpg" class="d-none d-md-block">
+          <img src="img/122116370-vanilla-ice-cream-cone-with-chocolate-on-a-background-of-pastel-colors-pink-and-blue-.jpg" class="d-xs-block d-md-none">
         </div>
         <div class="swiper-slide">
-          <img src="img/banner2.jpg">
+          <img src="img/banner2.jpg" class="d-none d-md-block">
+          <img src="img/le-creuset-ice-cream-bowls.jpg" class="d-xs-block d-md-none">
         </div>
         <div class="swiper-slide">
-          <img src="img/banner1.jpg">
+          <img src="img/banner1.jpg" class="d-none d-md-block">
+          <img src="img/122116370-vanilla-ice-cream-cone-with-chocolate-on-a-background-of-pastel-colors-pink-and-blue-.jpg" class="d-xs-block d-md-none">
         </div>
         <div class="swiper-slide">
-          <img src="img/banner2.jpg">
+          <img src="img/banner2.jpg" class="d-none d-md-block">
+          <img src="img/le-creuset-ice-cream-bowls.jpg" class="d-xs-block d-md-none">
         </div>
       </div>
       <!-- Add Pagination -->
@@ -68,10 +78,10 @@
   </section>
   <!--Swipper-->
   <!-- carrito de compras -->
-  <div class="modal-body d-none p-0" id="pintarCarrito"></div>
+  <div class="modal-body d-none p-0 bg-dark" id="pintarCarrito"></div>
   <div class="card-sales">
-    <button onclick="cerrarAbrirCarrito()" class="nav-link bg-transparent border-0" id="carrito" href="#"><i
-        class="fas fa-cart-plus h2 text-danger" aria-hidden="true"></i></button>
+    <span id="countTotalProduct"></span>
+    <button onclick="cerrarAbrirCarrito()" class="nav-link bg-transparent border-0" id="carrito" href="#"><i class="fas fa-shopping-basket h2 text-dark"></i></button>
   </div>
 
   <!-- NAVBAR FIN -->
@@ -146,7 +156,7 @@
 
 
   <!-- PRESENTACION INICIO -->
-  <div class="jumbotron-fluid txt-welcome">
+  <div class="jumbotron-fluid txt-welcome mt-5">
     <div class="container">
       <h1 class="text-center font-weight-bold">LOS MEJORES HELADOS A TU ALCANCE</h1>
     </div>

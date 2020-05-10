@@ -27,7 +27,7 @@ const pintarHelados = async () => {
     helados.forEach(helado => {
         // cl(helado);
         html += `
-        <div class="card col-12  col-md-4 col-lg-3 crece  m-0 p-0 "  style="width: 18rem;">
+        <div class="card col-10 offset-2 col-md-5 offser-md-2 col-lg-3 crece  m-0 p-0 "  style="width: 18rem;">
             <div class="m-1 card-product">
                 <img src="${helado.imagen}" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -83,7 +83,7 @@ const obtenerLocalStorage = () => {
         arrayLS = [];
     } else {
         arrayLS = JSON.parse(localStorage.getItem("productos"));
-            //cl(arrayLS)
+        //cl(arrayLS)
     }
     return arrayLS;
 }
@@ -108,8 +108,8 @@ const cerrarAbrirCarrito = () => {
 }
 
 //Elimiina duplicados de un Array
-const noDuplicados = (arr)=>{ 
-    let arrNoDup  = Array.from(new Set(arr));
+const noDuplicados = (arr) => {
+    let arrNoDup = Array.from(new Set(arr));
     return arrNoDup;
 }
 
@@ -120,6 +120,9 @@ const pintarCarrito = async () => {
     let orden = []; //array con objeto de cada producto ordenado
     let obj = {}; //producto en la orden
 
+    //Contador notificacion
+    let countProdTotal = 0;
+
     let contenido = q('#pintarCarrito');
     let heladosJson = await getHelados(); //json
     let productosLS = obtenerLocalStorage(); //LocalStorage
@@ -127,17 +130,17 @@ const pintarCarrito = async () => {
             <div class="container justify-content-center">
                 <div class="row py-2">
                     <div class="col p-0 text-center">
-                        <p class="h6 text-white">Productos Seleccionados</p>
+                        <p class="h3 text-white">Productos Seleccionados</p>
                     </div>   
                 </div>   
             </div>`;
-   
+    html += `<div class="products-container-card">`
     //Eliminar duplicados del array del LS
     let prodNoDupLS = noDuplicados(productosLS);
     //let prodNoDupLS = Array.from(new Set(productosLS));
     //console.log(prodNoDupLS);
 
-    
+
 
     //Recorrer si coinciden los ID's JSON con el Array no duplicado
     prodNoDupLS.forEach(iLS => {
@@ -147,6 +150,8 @@ const pintarCarrito = async () => {
 
                 //Cuenta duplicados
                 let contador = contarDuplicadoLS(productosLS, iLS);
+
+
 
                 //Precio unitario * numero de duplicados
                 total += parseFloat((helado.precio * contador));
@@ -162,6 +167,8 @@ const pintarCarrito = async () => {
                 //Metiendo cada objeto en array
                 orden.push(obj);
 
+                //Contador Notificacion
+                countProdTotal += contador;
 
                 //Pintando en el div del carrito
                 html += `
@@ -191,10 +198,10 @@ const pintarCarrito = async () => {
         });
 
     });
-
+    html += `</div>`
     //Obeniendo array ordenes
     var ordenPedido = orden;
-        //cl(ordenPedido)
+    //cl(ordenPedido)
 
 
     //Pintando Total en la parte inferior del carrito
@@ -219,6 +226,12 @@ const pintarCarrito = async () => {
             `;
     //cl(total.toFixed(2), "prueba");
     //cl(prodNoDupLS)
+
+
+    //Contador Notificacion
+    cl(countProdTotal);
+    localStorage.setItem('contador',countProdTotal);
+    q('#countTotalProduct').innerHTML=countProdTotal;
 
     //En caso el carrito este vacio, pintara esto en el div
     if (prodNoDupLS.length == 0) {
@@ -250,7 +263,7 @@ const eliminarUnoLS = (id) => {
 
     //obtener de LS
     let arrayLS = obtenerLocalStorage();
-        //cl(arrayLS);
+    //cl(arrayLS);
 
     let pos = arrayLS.indexOf(id);
     arrayLS.splice(pos, 1);
@@ -311,7 +324,7 @@ const pedido = async (total) => {
 
     let table = q('#table-content');
     let precio = q('#price');
-        //cl(precio)
+    //cl(precio)
     let orden = await pintarCarrito();
     //cl(orden)
     let html = '';
@@ -338,13 +351,13 @@ const pedido = async (total) => {
             </div>
         </div>`;
 
-    
+
     table.innerHTML = html;
     precio.innerHTML = cadPrice;
 
     //Pasar Total al LS
     let montoTotal = total.toFixed(2);
-    localStorage.setItem('total',montoTotal);
+    localStorage.setItem('total', montoTotal);
 }
 
 
@@ -364,7 +377,7 @@ const sendOrden = async (e) => {
     let direccion = q('#direccion').value;
 
     //Creando cadena de datos para insertar en parrafo y PDF
-    let  datosCliente = `<h5 class="text-center h2 text-success">Cliente: ${nombre} Contacto:  ${celular} ${direccion}</h5>`;
+    let datosCliente = `<h5 class="text-center h2 text-success">Cliente: ${nombre} Contacto:  ${celular} ${direccion}</h5>`;
 
 
     let cadena = JSON.stringify(ped);
@@ -380,7 +393,7 @@ const sendOrden = async (e) => {
             //Generar PDF
             HTMLtoPDF();
 
-            let evt = `https://api.whatsapp.com/send?phone=51970344480&text=Hola!%20soy%20${nombre}%20realice%20un%20pedido%20desde%20la%20web!%20Esta%20es%20mi%20direccion%20"%20${direccion}%20"%20y%20mi%20celular%20${celular}%20${cadena}%20con%20un%20total%20de%20${monto}`;
+            let evt = `https://api.whatsapp.com/send?phone=51930692689&text=Hola!%20soy%20${nombre}%20realice%20un%20pedido%20desde%20la%20web!%20Esta%20es%20mi%20direccion%20"%20${direccion}%20"%20y%20mi%20celular%20${celular}%20${cadena}%20con%20un%20total%20de%20${monto}`;
 
             window.open(evt, '_blank');
             // window.location.href = evt;
@@ -393,30 +406,30 @@ const sendOrden = async (e) => {
 //Generar un PDF
 const HTMLtoPDF = () => {
 
-	var pdf = new jsPDF('p', 'pt', 'letter');
-	source = $('#HTMLtoPDF')[0];
-	specialElementHandlers = {
-		'#bypassme': function (element, renderer) {
-			return true
-		}
-	}
-	margins = {
-		top: 50,
-		left: 60,
-		width: 545
-	};
-	pdf.fromHTML(
-		source // HTML string or DOM elem ref.
-		, margins.left // x coord
-		, margins.top // y coord
-		, {
-			'width': margins.width // max width of content on PDF
-			, 'elementHandlers': specialElementHandlers
-		},
-		function (dispose) {
-			// dispose: object with X, Y of the last line add to the PDF
-			//          this allow the insertion of new lines after html
-			pdf.save('miOrden.pdf');
-		}
-	)
+    var pdf = new jsPDF('p', 'pt', 'letter');
+    source = $('#HTMLtoPDF')[0];
+    specialElementHandlers = {
+        '#bypassme': function (element, renderer) {
+            return true
+        }
+    }
+    margins = {
+        top: 50,
+        left: 60,
+        width: 545
+    };
+    pdf.fromHTML(
+        source // HTML string or DOM elem ref.
+        , margins.left // x coord
+        , margins.top // y coord
+        , {
+            'width': margins.width // max width of content on PDF
+            , 'elementHandlers': specialElementHandlers
+        },
+        function (dispose) {
+            // dispose: object with X, Y of the last line add to the PDF
+            //          this allow the insertion of new lines after html
+            pdf.save('miOrden.pdf');
+        }
+    )
 }
