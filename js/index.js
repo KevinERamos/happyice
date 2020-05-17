@@ -7,9 +7,14 @@ const q = document.querySelector.bind(document)
 document.addEventListener('DOMContentLoaded', () => {
     pintarHelados();
     pintarCarrito();
-    q('.popup-information').style.display='block';
+    q('.popup-information').style.display="block";
 
+    
 });
+
+
+
+
 
 
 //Fetch Obteber de JSON
@@ -97,7 +102,7 @@ const cerrarAbrirCarrito = () => {
     //evt.preventDefault();
     //cl(window.event.type);
     const containerCart = q("#pintarCarrito");
-
+    
     containerCart.classList.forEach(clase => {
         if (clase === "d-none") {
             containerCart.classList.remove("d-none");
@@ -111,6 +116,7 @@ const cerrarAbrirCarrito = () => {
         }
     });
 }
+
 
 //Elimiina duplicados de un Array
 const noDuplicados = (arr) => {
@@ -426,7 +432,20 @@ const HTMLtoPDF = () => {
     )
 }
 
+
+//Cerrar aviso
 const btnClose = () => {
     let padre = q('.popup-information');
     padre.style.display = "none";
 }
+
+
+//Copiar cuentas
+function copiarAlPortapapeles(id_elemento) {
+    var aux = document.createElement("input");
+    aux.setAttribute("value", document.getElementById(id_elemento).innerHTML);
+    document.body.appendChild(aux);
+    aux.select();
+    document.execCommand("copy");
+    document.body.removeChild(aux);
+  }

@@ -32,7 +32,7 @@
 
 </head>
 
-<body>
+<body id="body">
   <div class="w-100 d-flex justify-content-center bg-dark fixed-top">
     <i class="fab fa-facebook-f fa-3x text-white p-3"></i>
     <i class="fab fa-whatsapp fa-3x text-white p-3"></i>
@@ -78,7 +78,8 @@
   </section>
   <!--Swipper-->
   <!-- carrito de compras -->
-  <div class="modal-body d-none p-0 bg-dark" id="pintarCarrito"></div>
+  <div class="cerrar modal-body d-none p-0 bg-dark" id="pintarCarrito"></div>
+  <div class="row-down d-none"></div>
   <div onclick="cerrarAbrirCarrito()" class="card-sales">
     <span id="countTotalProduct"></span>
     <i class="fas fa-shopping-basket h2 text-dark"></i>
@@ -172,23 +173,73 @@
       <!-- pintarHelados() -->
     </div>
   </div>
+
+  <div class="bg-white cintillo-banks">
+    <div class="brands-bank">
+      <div>
+        <h6 class="text-center font-weight-bold">REALIZA TU PAGO CON:</h6>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <img src="./img/bbva.png" onclick="copiarAlPortapapeles('a')" />
+            <span class="d-none" id="a" >192638956235</span>
+          </div>
+          <div class="col-lg-3 col-6">
+            <img src="./img/interbank.png" onclick="copiarAlPortapapeles('b')" />
+            <span class="d-none" id="b">192638956238</span>
+          </div>
+          <div class="col-lg-3 col-6">
+            <img src="./img/pe_bcp.png" onclick="copiarAlPortapapeles('c')"/>
+            <span class="d-none" id="c">192638956237</span>
+          </div>
+          <div class="col-lg-3 col-6">
+            <img src="./img/yape.png" onclick="copiarAlPortapapeles('d')"/>
+            <span class="d-none" id="d">192638956238</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- CONTENIDO FIN -->
 
   <div class="popup-information">
-    <div>
-      <span class="btnClose" id="close" onclick="btnClose(event)">x</span>
-      <h2>¡TE CONTAMOS COMO FUNCIONA!<h2>
-        <h4>Haz tu pedido a través de nuestra web.</h4>
-      <ul>
-        <li>1-Selecciona los productos que deseas comprar</li>
-        <li>3-Completa tus datos para poder recepcionar tu pedido</li>
-        <li>3-Verifica y envia tu pedido</li>
-        <li>3-Haz la transferencia y envianos el voucher por whatsapp</li>
-      </ul>
-      <div>
-        <h3>Paga a traves de los siguientes Bancos</h3>
+    <div class="container-popup-information">
+      <div class="cuadro-popup">
+        <span class="btnClose" id="close" onclick="btnClose()">x</span>
+        <div class="contenido-popup">
+          <div class="contenido-indicaciones">
+            <div class="logo-popup">
+              <img src="./img/vintage_frozen_custard_logo.png" />
+            </div>
+            <h2>¡TE CONTAMOS COMO FUNCIONA!<h2>
+              <h4>Haz tu pedido a través de nuestra web.</h4>
+            <ul>
+              <li>1- Selecciona los productos que deseas comprar</li>
+              <li>2- Completa tus datos para poder recepcionar tu pedido</li>
+              <li>3- Verifica y envia tu pedido</li>
+              <li>4- Haz la transferencia y envianos el voucher por whatsapp</li>
+            </ul>
+        </div>
         <div>
-          
+          <h3>Realiza tu depósito aqui:</h3>
+          <div class="brands-bank">
+            <div class="banks">
+              <div>
+                <img src="./img/bbva.png" />
+              </div>
+              <div>
+                <img src="./img/interbank.png" />
+              </div>
+              <div>
+                <img src="./img/pe_bcp.png" />
+              </div>
+              <div>
+                <img src="./img/yape.png" />
+              </div>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
     </div>
@@ -218,7 +269,7 @@
         </div>
       </div>
 
-      <div class="row ">
+      <!-- <div class="row ">
         <div class="col-6 text-center">
           <a href="https://www.facebook.com/Jhanbo-Tech-376601586240095/?ref=br_rs" target="_blank"><i id="foot"
               class="efecto fab fa-facebook-square text-center h1" aria-hidden="true"></i></a>
@@ -228,13 +279,13 @@
           <a href="https://api.whatsapp.com/send?phone=51930692689&amp;text=Hola%20¡%20Jhanbo%20Tech%20!"
             target="_blank"><i id="foot" class="efecto fab fa-whatsapp text-success h1" aria-hidden="true"></i></a>
         </div>
+
+      </div> -->
         <!-- 
         <div class="col-4 text-center pb-4">
           <a href="https://github.com/KevinERamos/happyice" target="_blank"><i id="foot"
               class="fab fa-github text-muted h1 efecto" aria-hidden="true"></i></a>
         </div> -->
-      </div>
-
     </div>
   </footer>
   <!-- FOOTER FIN -->
