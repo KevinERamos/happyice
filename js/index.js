@@ -7,6 +7,8 @@ const q = document.querySelector.bind(document)
 document.addEventListener('DOMContentLoaded', () => {
     pintarHelados();
     pintarCarrito();
+    q('.popup-information').style.display='block';
+
 });
 
 
@@ -209,18 +211,17 @@ const pintarCarrito = async () => {
                     <div class="col-12 py-2 text-center">
                         <h1 class="text-white">Total: S/. ${total.toFixed(2)}</h1>                 
                     </div>
-                    <div class="col-12 py-2">
+                    <div class="col-6 py-2">
+                    <button onclick="deleteAll()" class="btn btn-outline-danger ml-2" >Vaciar Carrito</button>
+                    </div>  
+                    <div class="col-6 py-2">
                         <button onclick="pedido(${total})" 
                         data-toggle="modal" data-target="#modal-orden"
                         class="w-100 btn btn-outline-success" >Confirmar</button> 
-                    </div> 
+                    </div>  
                 </div>      
             </div>
-            <div class="container">
-                <div class="row py-2">
-                    <button onclick="deleteAll()" class="btn btn-outline-danger ml-2" >Vaciar Carrito</button>
-                </div>      
-            </div>
+
             `;
 
     localStorage.setItem('contador', countProdTotal);
@@ -423,4 +424,9 @@ const HTMLtoPDF = () => {
             pdf.save('miOrden.pdf');
         }
     )
+}
+
+const btnClose = () => {
+    let padre = q('.popup-information');
+    padre.style.display = "none";
 }

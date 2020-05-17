@@ -90,6 +90,10 @@ a.crece-btn {
   -moz-box-shadow: 0px 2px 23px 3px rgba(0,0,0,0.75);
   box-shadow: 0px 2px 23px 3px rgba(0,0,0,0.75);
 }
+/* j */
+#pintarCarrito .container .py-2 .text-center h1{
+  font-size: 2rem;
+}
 #pintarCarrito:before{
   left: auto;
   right: 5px;
@@ -172,7 +176,7 @@ section #swipper-pizza{
   overflow: auto;
   height: 200px;
   overflow-x: hidden;
-  padding: 30px;
+  padding: 15px;
 }
 #countTotalProduct{
   position: absolute;
@@ -190,15 +194,95 @@ section #swipper-pizza{
 .products-container-card .container{
   border-top: 1px solid #fff;
 }
-  height: 35px;
-  line-height: 35px;
-  border-radius: 50%;
-  right: -10px;
-  font-size: 18px;
-  font-weight: bold;
+.popup-information{
+  display:none;
+  position: fixed;
+  background: #181818a1;
+  max-width: 100%;
+  padding: 10px;
+  left: 0;
+  color: #fff;
+  font-size: 30px;
+  right: 0;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  z-index: 1500;
 }
 .products-container-card .container{
   border-top: 1px solid #fff;
+}
+@media (max-width: 768px) {
+  .txt-welcome div h1{
+    font-size: 18px;
+  }
+  #pintarCarrito {
+    position: fixed;
+    bottom: 0;
+  }
+.products-container-card .container{
+  border-top: 1px solid #fff;
+}
+}
+@media (max-width: 768px) {
+  .txt-welcome div h1{
+    font-size: 18px;
+  }
+  #pintarCarrito {
+    position: fixed;
+    bottom: 0;
+  }
+.products-container-card .container{
+  border-top: 1px solid #fff;
+}
+}
+@media (max-width: 768px) {
+  .txt-welcome div h1{
+    font-size: 18px;
+  }
+  #pintarCarrito {
+    position: fixed;
+    bottom: 0;
+  }
+.products-container-card .container{
+  border-top: 1px solid #fff;
+}
+}
+@media (max-width: 768px) {
+  .txt-welcome div h1{
+    font-size: 18px;
+  }
+  #pintarCarrito {
+    position: fixed;
+    bottom: 0;
+    border-radius: 5px 5px 0 0;
+    right: 0;
+    background-color: #fff;
+  }
+}
+@media (max-width: 768px) {
+  .txt-welcome div h1{
+    font-size: 18px;
+  }
+  #pintarCarrito {
+    position: fixed;
+    bottom: 0;
+    border-radius: 5px 5px 0 0;
+    right: 0;
+    background-color: #fff;
+  }
+}
+@media (max-width: 768px) {
+  .txt-welcome div h1{
+    font-size: 18px;
+  }
+  #pintarCarrito {
+    position: fixed;
+    bottom: 0;
+    border-radius: 5px 5px 0 0;
+    right: 0;
+    background-color: #fff;
+  }
 }
 @media (max-width: 768px) {
   .txt-welcome div h1{
