@@ -68,25 +68,40 @@ a.crece-btn {
   transform: scale(1.02);
   transition: all 0.5s;
 }
-
+.d-block{
+  transition: all 2s ease-in-out;
+}
 #pintarCarrito {
+  transition: all 2s ease-in-out;
   position: fixed;
-  bottom: 0;
   border-radius: 5px 5px 0 0;
-  right: 0;
+  right: 40px;
+  bottom:110px;
   background-color: #fff;
-  width: 70%;
+  width: 35%;
   max-height: 50%;
   overflow-y: scroll;
   background-color: #fff;
   z-index: 4;
   border-bottom: none;
-  left: 0;
   margin: auto auto 0;
   overflow-x: hidden;
   -webkit-box-shadow: 0px 2px 23px 3px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 2px 23px 3px rgba(0,0,0,0.75);
   box-shadow: 0px 2px 23px 3px rgba(0,0,0,0.75);
+}
+#pintarCarrito:before{
+  left: auto;
+  right: 5px;
+  border: 30px solid;
+  border-color: transparent transparent #fff transparent;
+  bottom: -47px;
+  transform: rotate(180deg);
+  content: '';
+    display: block;
+    height: 87px;
+    position: absolute;
+    width: 27px;
 }
 .card {
   border-radius: 10px;
@@ -165,6 +180,16 @@ section #swipper-pizza{
   background: #3BCBD9;
   width: 35px;
   text-align: center;
+  height: 35px;
+  line-height: 35px;
+  border-radius: 50%;
+  right: -10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.products-container-card .container{
+  border-top: 1px solid #fff;
+}
   height: 35px;
   line-height: 35px;
   border-radius: 50%;

@@ -79,9 +79,9 @@
   <!--Swipper-->
   <!-- carrito de compras -->
   <div class="modal-body d-none p-0 bg-dark" id="pintarCarrito"></div>
-  <div class="card-sales">
+  <div onclick="cerrarAbrirCarrito()" class="card-sales">
     <span id="countTotalProduct"></span>
-    <button onclick="cerrarAbrirCarrito()" class="nav-link bg-transparent border-0" id="carrito" href="#"><i class="fas fa-shopping-basket h2 text-dark"></i></button>
+    <i class="fas fa-shopping-basket h2 text-dark"></i>
   </div>
 
   <!-- NAVBAR FIN -->
@@ -142,11 +142,14 @@
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-info" data-dismiss="modal">Seguir Comprando</button>
           <!-- <a target="_blank" onclick="sendOrden(event)" type="button" id="sendOrden" class="btn btn-success" >Enviar por Whatsapp</a> -->
           <!-- here we call the function that makes PDF -->
+          <p class="h5 float-rigth col-12">1. Descarge la orden de compra</p>
+          <btn class="btn btn-dark" onclick="HTMLtoPDF();">Descargar Orden</btn class="btn btn-dark">
+
+            <p class="h5 float-rigth col-12">2. envie la orden por whatsapp</p>
           <a target="_blank" id="sendOrden" onclick="sendOrden(event)" type="button" id="sendOrden"
-            class="btn btn-success generar">Enviar y Descargar</a>
+            class="btn btn-success generar">Enviar por Whatsapp</a>
         </div>
       </div>
     </div>

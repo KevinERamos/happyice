@@ -53,24 +53,26 @@ const añadirCarrito = (id) => {
     localStorage.setItem("productos", cadena);
 
     //Abre el carrito cada vez que presiona el botons
-    abrir();
+    //abrir();
+    pintarCarrito();//Actualiza el numero de productos
+
 }
 
 //Abrir el div del carrito - cambia de display al div
 const abrir = () => {
-    const containerCart = q("#pintarCarrito");
-
-    containerCart.classList.forEach(clase => {
-        if (clase === "d-none") {
-            containerCart.classList.remove("d-none");
-            containerCart.classList.add("d-block");
-            pintarCarrito();
-        }
-
-        if (clase === "d-block") {
-            pintarCarrito();
-        }
-    });
+    /*     const containerCart = q("#pintarCarrito");
+    
+        containerCart.classList.forEach(clase => {
+            if (clase === "d-none") {
+                containerCart.classList.remove("d-none");
+                containerCart.classList.add("d-block");
+                pintarCarrito();
+            }
+    
+            if (clase === "d-block") {
+                pintarCarrito();
+            }
+        }); */
 }
 
 
@@ -90,7 +92,8 @@ const obtenerLocalStorage = () => {
 
 //Abre y cierra, segun display del div de carrito
 const cerrarAbrirCarrito = () => {
-    cl(window.event.type);
+    //evt.preventDefault();
+    //cl(window.event.type);
     const containerCart = q("#pintarCarrito");
 
     containerCart.classList.forEach(clase => {
@@ -113,19 +116,17 @@ const noDuplicados = (arr) => {
     return arrNoDup;
 }
 
-//Captura Json y LS (pinta ID que coinciden) - devuelve un array con la orden
+//Captura Json y LS (pinta ID que coinciden) - devuelve un array de objetos con la orden
 const pintarCarrito = async () => {
 
     let total = 0; // monto total
     let orden = []; //array con objeto de cada producto ordenado
     let obj = {}; //producto en la orden
-
-    //Contador notificacion
-    let countProdTotal = 0;
-
+    let countProdTotal = 0;//Contador notificacion
     let contenido = q('#pintarCarrito');
     let heladosJson = await getHelados(); //json
     let productosLS = obtenerLocalStorage(); //LocalStorage
+
     html = `                    
             <div class="container justify-content-center">
                 <div class="row py-2">
@@ -134,15 +135,13 @@ const pintarCarrito = async () => {
                     </div>   
                 </div>   
             </div>`;
-    html += `<div class="products-container-card">`
+
+    html += `<div class="products-container-card">`;
+
     //Eliminar duplicados del array del LS
     let prodNoDupLS = noDuplicados(productosLS);
-    //let prodNoDupLS = Array.from(new Set(productosLS));
-    //console.log(prodNoDupLS);
 
-
-
-    //Recorrer si coinciden los ID's JSON con el Array no duplicado
+    //Recorrer si coinciden el Array no duplicado con los ID's de JSON
     prodNoDupLS.forEach(iLS => {
 
         heladosJson.forEach(helado => {
@@ -198,11 +197,10 @@ const pintarCarrito = async () => {
         });
 
     });
+
     html += `</div>`
     //Obeniendo array ordenes
     var ordenPedido = orden;
-    //cl(ordenPedido)
-
 
     //Pintando Total en la parte inferior del carrito
     html += `
@@ -224,14 +222,9 @@ const pintarCarrito = async () => {
                 </div>      
             </div>
             `;
-    //cl(total.toFixed(2), "prueba");
-    //cl(prodNoDupLS)
 
-
-    //Contador Notificacion
-    cl(countProdTotal);
-    localStorage.setItem('contador',countProdTotal);
-    q('#countTotalProduct').innerHTML=countProdTotal;
+    localStorage.setItem('contador', countProdTotal);
+    q('#countTotalProduct').innerHTML = countProdTotal;
 
     //En caso el carrito este vacio, pintara esto en el div
     if (prodNoDupLS.length == 0) {
@@ -241,6 +234,7 @@ const pintarCarrito = async () => {
     }
 
     //Devolviendo array de orden
+    //cl(ordenPedido)
     return ordenPedido;
 }
 
@@ -319,14 +313,12 @@ const deleteAll = () => {
 
 
 //Pinta pedido en el modal - Pasa el valor del total al LS
-const pedido = async (total) => {
-    cerrarAbrirCarrito();
-
+const pedido = async(total) => {
+    //cerrarAbrirCarrito();
+    var orden = [];
+    orden = await  pintarCarrito();
     let table = q('#table-content');
-    let precio = q('#price');
-    //cl(precio)
-    let orden = await pintarCarrito();
-    //cl(orden)
+    let precio = q('#price');   
     let html = '';
 
     orden.forEach(prod => {
@@ -346,7 +338,7 @@ const pedido = async (total) => {
                     El monto total es 
                 </div>
                 <div class="col-6 align-items-center">
-                    <strong class="display-4">S/ ${total.toFixed(2)}</strong>
+                    <strong class="h3">S/ ${total.toFixed(2)}</strong>
                 </div>
             </div>
         </div>`;
@@ -361,7 +353,7 @@ const pedido = async (total) => {
 }
 
 
-//Recoge array con la orden de pintarCarito() - y envia los datos a Whatsapp
+//Enviar  Por WSP - Recoge array con la orden de pintarCarito()
 const sendOrden = async (e) => {
 
     let ped = await pintarCarrito();
@@ -379,9 +371,11 @@ const sendOrden = async (e) => {
     //Creando cadena de datos para insertar en parrafo y PDF
     let datosCliente = `<h5 class="text-center h2 text-success">Cliente: ${nombre} Contacto:  ${celular} ${direccion}</h5>`;
 
-
-    let cadena = JSON.stringify(ped);
-    cl(cadena);
+    //Converiendo objeto a texto
+    let cadena = '';
+    ped.forEach((item, index, arr) => {
+        cadena += `${arr[index].nombre}(${arr[index].cantidad}), `;
+    });
 
     if (nombre.length <= 0 || celular.length <= 7 || celular.length > 9 || direccion.length <= 0) {
         alert('Ingrese sus datos correctamente')
@@ -390,13 +384,10 @@ const sendOrden = async (e) => {
 
         if (respuesta) {
             parr.innerHTML = datosCliente;
-            //Generar PDF
-            HTMLtoPDF();
 
-            let evt = `https://api.whatsapp.com/send?phone=51930692689&text=Hola!%20soy%20${nombre}%20realice%20un%20pedido%20desde%20la%20web!%20Esta%20es%20mi%20direccion%20"%20${direccion}%20"%20y%20mi%20celular%20${celular}%20${cadena}%20con%20un%20total%20de%20${monto}`;
+            let evt = `https://api.whatsapp.com/send?phone=51930692689&text=Hola!%20soy%20${nombre}%20realice%20un%20pedido%20desde%20la%20web!%20Esta%20es%20mi%20direccion%20"%20${direccion}%20"%20y%20mi%20celular%20${celular};%20este es el detalle de mi pedido: ${cadena}%20con%20un%20total%20de%20${monto} soles`;
 
             window.open(evt, '_blank');
-            // window.location.href = evt;
         }
     }
 }
