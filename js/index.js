@@ -7,14 +7,14 @@ const q = document.querySelector.bind(document)
 document.addEventListener('DOMContentLoaded', () => {
     pintarHelados();
     pintarCarrito();
-    q('.popup-information').style.display="block";
-
-    
+    pintarPopup();
 });
 
 
-
-
+//Mostrar Popup
+const pintarPopup = () =>{
+    q('.popup-information').style.display="block";
+}
 
 
 //Fetch Obteber de JSON
@@ -111,12 +111,23 @@ const cerrarAbrirCarrito = () => {
         }
 
         if (clase === "d-block") {
-            containerCart.classList.remove("d-block");
-            containerCart.classList.add("d-none");
+            cerrarCarrito();
         }
     });
 }
 
+
+const cerrarCarrito = () => {
+    const containerCart = q("#pintarCarrito");
+
+    containerCart.classList.forEach(clase => {
+        if (clase === "d-block") {
+            containerCart.classList.remove("d-block");
+            containerCart.classList.add("d-none");
+        }
+    });
+        
+}
 
 //Elimiina duplicados de un Array
 const noDuplicados = (arr) => {
@@ -139,7 +150,7 @@ const pintarCarrito = async () => {
             <div class="container justify-content-center">
                 <div class="row py-2">
                     <div class="col p-0 text-center">
-                        <p class="h3 text-white">Productos Seleccionados</p>
+                        <p class="h3 text-primary">Productos Seleccionados</p>
                     </div>   
                 </div>   
             </div>`;
@@ -182,7 +193,7 @@ const pintarCarrito = async () => {
                     <div class="container">
                         <div class="row py-2">
                             <div class="col-1 p-0 text-center" id="cantidad">
-                                <span class="badge badge-info">${contador}</span>
+                                <span class="badge badge-success">${contador}</span>
                             </div>
                             <div class="col-1 p-0"><img src="${helado.imagen}" class="img-fluid"></div>
                             <div class="col-2 p-0 text-center text-info">${helado.nombre}</div>
@@ -221,7 +232,7 @@ const pintarCarrito = async () => {
                     <button onclick="deleteAll()" class="btn btn-outline-danger ml-2" >Vaciar Carrito</button>
                     </div>  
                     <div class="col-6 py-2">
-                        <button onclick="pedido(${total})" 
+                        <button onclick="pedido(${total}), cerrarCarrito()" 
                         data-toggle="modal" data-target="#modal-orden"
                         class="w-100 btn btn-outline-success" >Confirmar</button> 
                     </div>  
@@ -235,7 +246,9 @@ const pintarCarrito = async () => {
 
     //En caso el carrito este vacio, pintara esto en el div
     if (prodNoDupLS.length == 0) {
-        contenido.innerHTML = '<p class="h1 text-center text-danger">añadir productos al carrito<i class="fas fa-cart-arrow-down"></i></p>';
+        contenido.innerHTML = `<div class="bg-info h-100 d-flex align-items-center justify-content-center">
+                                    <p class="h3 font-weight-bold text-center text-white">Carrito vacio<i class="fas fa-cart-arrow-down"></i></p>
+                                </div>`;
     } else {
         contenido.innerHTML = html;
     }
@@ -381,7 +394,7 @@ const sendOrden = async (e) => {
     //Converiendo objeto a texto
     let cadena = '';
     ped.forEach((item, index, arr) => {
-        cadena += `${arr[index].nombre}(${arr[index].cantidad}), `;
+        cadena += `  - ${arr[index].nombre} (${arr[index].cantidad})%0A`;
     });
 
     if (nombre.length <= 0 || celular.length <= 7 || celular.length > 9 || direccion.length <= 0) {
@@ -392,13 +405,12 @@ const sendOrden = async (e) => {
         if (respuesta) {
             parr.innerHTML = datosCliente;
 
-            let evt = `https://api.whatsapp.com/send?phone=51930692689&text=Hola!%20soy%20${nombre}%20realice%20un%20pedido%20desde%20la%20web!%20Esta%20es%20mi%20direccion%20"%20${direccion}%20"%20y%20mi%20celular%20${celular};%20este es el detalle de mi pedido: ${cadena}%20con%20un%20total%20de%20${monto} soles`;
+            let evt = `https://api.whatsapp.com/send?phone=51930692689&text=Hola!%20soy%20${nombre}%0Arealice%20un%20pedido%20desde%20la%20web!%0AEsta%20es%20mi%20direccion%20"%20${direccion}%20"%20y%20mi%20celular%20${celular}%0Aeste es el detalle de mi pedido:%0A%0A${cadena}Con%20un%20total%20de%20${monto} soles`;
 
             window.open(evt, '_blank');
         }
     }
 }
-
 
 
 //Generar un PDF
@@ -433,19 +445,19 @@ const HTMLtoPDF = () => {
 }
 
 
-//Cerrar aviso
+//Cerrar popup aviso
 const btnClose = () => {
     let padre = q('.popup-information');
     padre.style.display = "none";
 }
 
 
-//Copiar cuentas
-function copiarAlPortapapeles(id_elemento) {
+//Copiar cuentas de aviso
+const  copiarAlPortapapeles= (id_elemento) => {
     var aux = document.createElement("input");
     aux.setAttribute("value", document.getElementById(id_elemento).innerHTML);
     document.body.appendChild(aux);
     aux.select();
     document.execCommand("copy");
     document.body.removeChild(aux);
-  }
+}

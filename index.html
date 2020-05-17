@@ -32,7 +32,7 @@
 
 </head>
 
-<body id="body">
+<body id="body" >
   <div class="w-100 d-flex justify-content-center bg-dark fixed-top">
     <i class="fab fa-facebook-f fa-3x text-white p-3"></i>
     <i class="fab fa-whatsapp fa-3x text-white p-3"></i>
@@ -40,7 +40,7 @@
   </div>
 
   <!-- NAVBAR INICIO -->
-  <nav class="navbar navbar-expand-sm justify-content-center navbar navbar-dark bg-white mt-5 pt-4">
+  <nav class="navbar navbar-expand-sm justify-content-center navbar navbar-dark bg-white mt-5 pt-4" onclick="cerrarCarrito()">
     <div class="container justify-content-center">
       <div class="row">
         <div class="col-12 d-flex justify-content-center">
@@ -52,7 +52,7 @@
 
   </nav>
   <!-- Swiper -->
-  <section>
+  <section onclick="cerrarCarrito()">
     <div id="swipper-pizza" class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
@@ -78,7 +78,9 @@
   </section>
   <!--Swipper-->
   <!-- carrito de compras -->
-  <div class="cerrar modal-body d-none p-0 bg-dark" id="pintarCarrito"></div>
+  <div class="d-none modal-body  p-0 " id="pintarCarrito">
+    <!-- contenido del carrito -->
+  </div>
   <div class="row-down d-none"></div>
   <div onclick="cerrarAbrirCarrito()" class="card-sales">
     <span id="countTotalProduct"></span>
@@ -160,7 +162,7 @@
 
 
   <!-- PRESENTACION INICIO -->
-  <div class="jumbotron-fluid txt-welcome mt-5">
+  <div class="jumbotron-fluid txt-welcome mt-5" onclick="cerrarCarrito()">
     <div class="container">
       <h1 class="text-center font-weight-bold">LOS MEJORES HELADOS A TU ALCANCE</h1>
     </div>
@@ -168,13 +170,13 @@
   <!-- PRESENTACION FIN -->
 
   <!-- CONTENIDO INICIO -->
-  <div class="container my-4">
+  <div class="container my-4" onclick="cerrarCarrito()">
     <div class="row d-flex justify-content-center" id="contenido">
       <!-- pintarHelados() -->
     </div>
   </div>
 
-  <div class="bg-white cintillo-banks">
+  <div class="bg-white cintillo-banks" onclick="cerrarCarrito()">
     <div class="brands-bank">
       <div>
         <h6 class="text-center font-weight-bold">REALIZA TU PAGO CON:</h6>
@@ -247,7 +249,7 @@
 
 
   <!-- FOOTER INICIO -->
-  <footer>
+  <footer onclick="cerrarCarrito()">
     <div class="container-fluid bg-dark">
 
       <div class="row">
